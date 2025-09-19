@@ -4,7 +4,7 @@
   --font-l: 2rem;
   --font-m: 1rem;
   --font-s: 0.8rem;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 body {

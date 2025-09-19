@@ -3,23 +3,37 @@ import { useEffect, useState } from "react";
 
 import Thumbnail from "./Thumbnail.jsx";
 import LargeImage from "./LargeImage.jsx";
+import SearchBar from "./SearchBar.jsx";
 
 export default function Gallery() {
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [searchTerm, setSearchTerm] = useState("pier");
 
   useEffect(() => {
     async function getImages() {
-      const response = await fetch(import.meta.env.VITE_API_URL);
+      const options = {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+          Authorization: `Client-ID ${
+            import.meta.env.VITE_UNSPLASH_ACCESS_KEY
+          }`,
+        },
+      };
+      const response = await fetch(
+        import.meta.env.VITE_API_BASE + "?query=" + searchTerm,
+        options
+      );
       const data = await response.json();
-      const wrangledData = data;
+      const wrangledData = data.results;
       setImages(wrangledData);
     }
     getImages();
-  }, []);
+  }, [searchTerm]);
 
   function handleClick(id) {
-    setCurrentIndex(id - 1);
+    setCurrentIndex(id);
   }
 
   // updating state with a function gives you the value before the state change as an argument.
@@ -36,6 +50,7 @@ export default function Gallery() {
   }
 
   const largeImage = images[currentIndex];
+  let inputBox;
 
   return (
     <>
@@ -44,10 +59,11 @@ export default function Gallery() {
           return (
             <Thumbnail
               key={image.id}
-              url={image.url}
-              alt={image.alt}
+              url={image.urls.small}
+              alt={image.alt_description}
               clickEvent={() => {
-                handleClick(image.id);
+                // changed from image.id when implemented Unsplash, as the IDs were not incremental numbers anymore, so had to return the index of the image in the array instead so that it works with my currentIndex state.
+                handleClick(images.indexOf(image));
               }}
             />
           );
@@ -57,14 +73,19 @@ export default function Gallery() {
       <section className="large-image-container">
         {largeImage && (
           <LargeImage
-            url={largeImage.url}
-            alt={largeImage.alt}
-            title={largeImage.title}
+            url={largeImage.urls.regular}
+            alt={largeImage.alt_description}
+            title={largeImage.slug}
             prevImage={() => prevImage()}
             nextImage={() => nextImage()}
           />
         )}
       </section>
+
+      <SearchBar
+        handleChange={(element) => (inputBox = element.target.value)}
+        search={() => setSearchTerm(inputBox)}
+      />
     </>
   );
 }
