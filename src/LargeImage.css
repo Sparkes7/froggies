@@ -31,6 +31,15 @@
   border: 1px solid white;
   padding: 0.5rem 1.5rem;
   z-index: 1;
+  border-radius: 1rem;
+  transition: all 0.1s;
+}
+
+.button:hover,
+.button:active,
+.button:focus {
+  background-color: white;
+  color: black;
 }
 
 .prev {

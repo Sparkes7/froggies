@@ -64,6 +64,7 @@ export default function Gallery() {
           url={largeImage.urls.regular}
           alt={largeImage.alt_description}
           title={largeImage.user.name}
+          keyPress={(e) => console.log(e)}
           prevImage={() => prevImage()}
           nextImage={() => nextImage()}
         />

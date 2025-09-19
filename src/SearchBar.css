@@ -19,4 +19,12 @@
   border: 1px solid white;
   color: white;
   border-radius: 1rem;
+  transition: all 0.1s;
+}
+
+.search-button:hover,
+.search-button:focus,
+.search-button:active {
+  color: black;
+  background-color: white;
 }

@@ -17,7 +17,9 @@
   display: inline-block;
 }
 
-.thumb-button:hover {
+.thumb-button:hover,
+.thumb-button:active,
+.thumb-button:focus {
   transform: scale(1.05);
   border-color: white;
 }
