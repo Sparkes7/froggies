@@ -36,7 +36,6 @@
 }
 
 .button:hover,
-.button:active,
 .button:focus {
   background-color: white;
   color: black;

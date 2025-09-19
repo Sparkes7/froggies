@@ -23,8 +23,7 @@
 }
 
 .search-button:hover,
-.search-button:focus,
-.search-button:active {
+.search-button:focus {
   color: black;
   background-color: white;
 }
