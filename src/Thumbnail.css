@@ -2,10 +2,11 @@
   width: 5rem;
   height: 5rem;
   background-color: black;
-  border: 1px solid rgb(0, 131, 28);
-  transition: all 0.2s;
+  border: 1px solid rgb(80, 80, 80);
+  transition: all 0.1s;
   padding: 0;
   z-index: 1;
+  margin: 0.5rem;
 }
 
 .image {
@@ -13,8 +14,10 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  display: inline-block;
 }
 
 .thumb-button:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+  border-color: white;
 }

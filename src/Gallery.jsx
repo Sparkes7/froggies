@@ -54,38 +54,38 @@ export default function Gallery() {
 
   return (
     <>
-      <section className="thumbnails-container">
-        {images.map((image) => {
-          return (
-            <Thumbnail
-              key={image.id}
-              url={image.urls.small}
-              alt={image.alt_description}
-              clickEvent={() => {
-                // changed from image.id when implemented Unsplash, as the IDs were not incremental numbers anymore, so had to return the index of the image in the array instead so that it works with my currentIndex state.
-                handleClick(images.indexOf(image));
-              }}
-            />
-          );
-        })}
-      </section>
-
-      <section className="large-image-container">
-        {largeImage && (
-          <LargeImage
-            url={largeImage.urls.regular}
-            alt={largeImage.alt_description}
-            title={largeImage.slug}
-            prevImage={() => prevImage()}
-            nextImage={() => nextImage()}
-          />
-        )}
-      </section>
-
       <SearchBar
         handleChange={(element) => (inputBox = element.target.value)}
         search={() => setSearchTerm(inputBox)}
       />
+
+      {largeImage && (
+        <LargeImage
+          url={largeImage.urls.regular}
+          alt={largeImage.alt_description}
+          title={largeImage.user.name}
+          prevImage={() => prevImage()}
+          nextImage={() => nextImage()}
+        />
+      )}
+
+      <section className="thumbnails-section">
+        <div className="thumbnails-container">
+          {images.map((image) => {
+            return (
+              <Thumbnail
+                key={image.id}
+                url={image.urls.small}
+                alt={image.alt_description}
+                clickEvent={() => {
+                  // changed from image.id when implemented Unsplash, as the IDs were not incremental numbers anymore, so had to return the index of the image in the array instead so that it works with my currentIndex state.
+                  handleClick(images.indexOf(image));
+                }}
+              />
+            );
+          })}
+        </div>
+      </section>
     </>
   );
 }

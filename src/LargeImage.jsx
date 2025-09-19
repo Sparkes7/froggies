@@ -9,21 +9,22 @@ export default function LargeImage({
   nextImage,
 }) {
   return (
-    <>
-      <button className="button prev" onClick={prevImage}>
-        Previous
-      </button>
-      <h2 className="title">{title}</h2>
+    <section className="large-image-container">
+      <h2 className="title">Photographer: {title}</h2>
       <img
+        className="large-image"
         src={url}
         alt={alt}
-        className="large-image"
         onKeyDown={keyPress}
         draggable="false"
       />
+
+      <button className="button prev" onClick={prevImage}>
+        Previous
+      </button>
       <button className="button next" onClick={nextImage}>
         Next
       </button>
-    </>
+    </section>
   );
 }
