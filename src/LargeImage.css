@@ -48,3 +48,17 @@
 .next {
   right: 1rem;
 }
+
+@media (max-width: 768px) {
+  .button {
+    font-size: var(--font-s);
+    padding: 0.2rem 0.5rem;
+  }
+
+  .prev {
+    left: 0.5rem;
+  }
+  .next {
+    right: 0.5rem;
+  }
+}

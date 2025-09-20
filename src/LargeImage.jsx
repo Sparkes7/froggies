@@ -19,10 +19,18 @@ export default function LargeImage({
         draggable="false"
       />
 
-      <button className="button prev" onClick={prevImage}>
-        Previous
+      <button
+        className="button prev"
+        onClick={prevImage}
+        aria-label="previous image"
+      >
+        Prev
       </button>
-      <button className="button next" onClick={nextImage}>
+      <button
+        className="button next"
+        onClick={nextImage}
+        aria-label="next image"
+      >
         Next
       </button>
     </section>

@@ -10,7 +10,7 @@
 }
 
 .search-input {
-  width: 10%;
+  width: 20%;
 }
 
 .search-button {
@@ -26,4 +26,14 @@
 .search-button:focus {
   color: black;
   background-color: white;
+}
+
+@media (max-width: 768px) {
+  .search-input {
+    width: 50%;
+  }
+
+  .search-container {
+    justify-content: center;
+  }
 }
